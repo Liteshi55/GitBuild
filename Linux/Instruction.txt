@@ -56,4 +56,4 @@ auditwheel repair dist/htrfnwe-0.6-cp310-cp310-linux_x86_64.whl
 
 Pypi to upload wheel on repository
 pip install twine
-twine upload --skip-existing .\dist\* -u __token__  -p pypi-AgEIcHlwaS5vcmcCJGNlMjUwYjliLWIwNTItNDkxNC1iNzU0LWVjNGJhZDFjMjIxOAACKlszLCIyMzEyYzU2Ni0wMWJkLTRhYzAtYWJlMi0yOTdjMWZiYzMyYjYiXQAABiBjz7cZo3oC0yOAUJ1p0wgMmgqA59mIxA56Ktw_t3pvoA --verbose
+twine upload --skip-existing .\dist\* -u __token__  -p <token> --verbose
