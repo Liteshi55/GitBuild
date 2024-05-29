@@ -1,0 +1,59 @@
+Buld instrunction for crogram to python wrapper library:
+Step 1: 
+Genrate pure c code using pyx file.
+compile it using command to create header file :- gcc -o halftrend halftrend.c -lm
+test thec program : ./halftrend
+
+Step 2:  Write the Wrapper 'wrapper.c' for C Functions for compiled code: 
+Step 3: setup.py
+
+htrfnwe_v8/
+│
+├── src/
+│   ├── htrfnwe/
+│   │   ├── __init__.py
+│   │   ├── halftrend.c
+│   │   ├── halftrend.h
+│   │   └── wrapper.c
+│
+├── tests/
+│   ├── __init__.py
+│   └── test_halftrend.py
+│
+├── README.md
+├── LICENSE
+├── setup.py
+└── pyproject.toml
+
+Step 4: pyproject.toml
+[build-system]
+requires = ["setuptools", "wheel", "numpy"]
+build-backend = "setuptools.build_meta"
+
+Step 6: Write Tests
+Create test cases in the tests directory. Example test_halftrend.py
+
+Create virtual environment 
+python3.7 -m venv py37-venv
+. py37-venv/bin/activate
+deactivate Python Venv: venv_environment#\deactivate 
+pip install --upgrade --force-reinstall pip setuptools Cython wheel twins auditwheel scikit-learn numpy pytest==4.4.1 pytest-runner==4.4
+
+Step 7: Build and Test the Package
+python setup.py build_ext --inplace sdist bdist bdist_wheel
+
+for Build Cleanup:
+python setup.py clean --all install
+
+Run the tests:
+python -m unittest discover -s tests
+python -c "import halftrend; print(halftrend.halftrend)"
+check Execution time of python program:
+python -m cProfile TestLinuxCythonichtrfnwe.py
+
+Step 7: repair/validate wheel package for re-distribustion using auditwheel
+auditwheel repair dist/htrfnwe-0.6-cp310-cp310-linux_x86_64.whl
+
+Pypi to upload wheel on repository
+pip install twine
+twine upload --skip-existing .\dist\* -u __token__  -p pypi-AgEIcHlwaS5vcmcCJGNlMjUwYjliLWIwNTItNDkxNC1iNzU0LWVjNGJhZDFjMjIxOAACKlszLCIyMzEyYzU2Ni0wMWJkLTRhYzAtYWJlMi0yOTdjMWZiYzMyYjYiXQAABiBjz7cZo3oC0yOAUJ1p0wgMmgqA59mIxA56Ktw_t3pvoA --verbose
